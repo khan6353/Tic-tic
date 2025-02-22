@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country List with Fake Mobile Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #28a745; /* New Green color */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .flag {
+            width: 60px;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px;
+        }
+
+        .country-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .phone-number {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff; /* Blue color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .card {
+                padding: 12px;
+            }
+
+            .flag {
+                width: 50px;
+            }
+
+            .country-name {
+                font-size: 16px;
+            }
+
+            .phone-number {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fake Mobile Number Generator</h1>
+    </header>
+    
+    <div class="container">
+        <!-- US Card -->
+        <div class="card" id="usCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="US Flag" class="flag">
+            <div class="country-name">United States</div>
+            <div class="phone-number" id="usPhoneNumber"></div>
+            <button onclick="generateFakeNumber('US')">Generate US Number</button>
+        </div>
+
+        <!-- UK Card -->
+        <div class="card" id="ukCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_Kingdom.svg" alt="UK Flag" class="flag">
+            <div class="country-name">United Kingdom</div>
+            <div class="phone-number" id="ukPhoneNumber"></div>
+            <button onclick="generateFakeNumber('UK')">Generate UK Number</button>
+        </div>
+
+        <!-- India Card -->
+        <div class="card" id="inCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_India.svg" alt="India Flag" class="flag">
+            <div class="country-name">India</div>
+            <div class="phone-number" id="inPhoneNumber"></div>
+            <button onclick="generateFakeNumber('IN')">Generate India Number</button>
+        </div>
+
+        <!-- Canada Card -->
+        <div class="card" id="caCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Canada.svg" alt="Canada Flag" class="flag">
+            <div class="country-name">Canada</div>
+            <div class="phone-number" id="caPhoneNumber"></div>
+            <button onclick="generateFakeNumber('CA')">Generate Canada Number</button>
+        </div>
+
+        <!-- Australia Card -->
+        <div class="card" id="auCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Flag_of_Australia.svg" alt="Australia Flag" class="flag">
+            <div class="country-name">Australia</div>
+            <div class="phone-number" id="auPhoneNumber"></div>
+            <button onclick="generateFakeNumber('AU')">Generate Australia Number</button>
+        </div>
+
+        <!-- France Card -->
+        <div class="card" id="frCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" alt="France Flag" class="flag">
+            <div class="country-name">France</div>
+            <div class="phone-number" id="frPhoneNumber"></div>
+            <button onclick="generateFakeNumber('FR')">Generate France Number</button>
+        </div>
+
+        <!-- Germany Card -->
+        <div class="card" id="deCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" alt="Germany Flag" class="flag">
+            <div class="country-name">Germany</div>
+            <div class="phone-number" id="dePhoneNumber"></div>
+            <button onclick="generateFakeNumber('DE')">Generate Germany Number</button>
+        </div>
+
+        <!-- Japan Card -->
+        <div class="card" id="jpCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" alt="Japan Flag" class="flag">
+            <div class="country-name">Japan</div>
+            <div class="phone-number" id="jpPhoneNumber"></div>
+            <button onclick="generateFakeNumber('JP')">Generate Japan Number</button>
+        </div>
+
+        <!-- Brazil Card -->
+        <div class="card" id="brCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Brazil Flag" class="flag">
+            <div class="country-name">Brazil</div>
+            <div class="phone-number" id="brPhoneNumber"></div>
+            <button onclick="generateFakeNumber('BR')">Generate Brazil Number</button>
+        </div>
+
+        <!-- South Africa Card -->
+        <div class="card" id="zaCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg" alt="South Africa Flag" class="flag">
+            <div class="country-name">South Africa</div>
+            <div class="phone-number" id="zaPhoneNumber"></div>
+            <button onclick="generateFakeNumber('ZA')">Generate South Africa Number</button>
+        </div>
+
+        <!-- Spain Card -->
+        <div class="card" id="esCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Spain Flag" class="flag">
+            <div class="country-name">Spain</div>
+            <div class="phone-number" id="esPhoneNumber"></div>
+            <button onclick="generateFakeNumber('ES')">Generate Spain Number</button>
+        </div>
+
+        <!-- Mexico Card -->
+        <div class="card" id="mxCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Flag_of_Mexico.svg" alt="Mexico Flag" class="flag">
+            <div class="country-name">Mexico</div>
+            <div class="phone-number" id="mxPhoneNumber"></div>
+            <button onclick="generateFakeNumber('MX')">Generate Mexico Number</button>
+        </div>
+
+        <!-- Italy Card -->
+        <div class="card" id="itCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" alt="Italy Flag" class="flag">
+            <div class="country-name">Italy</div>
+            <div class="phone-number" id="itPhoneNumber"></div>
+            <button onclick="generateFakeNumber('IT')">Generate Italy Number</button>
+        </div>
+
+        <!-- Russia Card -->
+        <div class="card" id="ruCard">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="Russia Flag" class="flag">
+            <div class="country-name">Russia</div>
+            <div class="phone-number" id="ruPhoneNumber"></div>
+            <button onclick="generateFakeNumber('RU')">Generate Russia Number</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Function to generate fake mobile numbers based on country code
+        function generateFakeNumber(country) {
+            let number = '';
+            const phoneNumberElem = document.getElementById(country.toLowerCase() + 'PhoneNumber');
+            
+            switch (country) {
+                case 'US':
+                    number = '(+1) ' + Math.floor(Math.random() * 900 + 100) + '-' + Math.floor(Math.random() * 900 + 100) + '-' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'UK':
+                    number = '(+44) 7' + Math.floor(Math.random() * 900 + 100) + ' ' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'IN':
+                    number = '(+91) ' + Math.floor(Math.random() * 9000000000 + 1000000000);
+                    break;
+                case 'CA':
+                    number = '(+1) ' + Math.floor(Math.random() * 900 + 100) + '-' + Math.floor(Math.random() * 900 + 100) + '-' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'AU':
+                    number = '(+61) ' + Math.floor(Math.random() * 900 + 100) + ' ' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'FR':
+                    number = '(+33) ' + Math.floor(Math.random() * 900 + 100) + ' ' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'DE':
+                    number = '(+49) ' + Math.floor(Math.random() * 900 + 100) + ' ' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'JP':
+                    number = '(+81) ' + Math.floor(Math.random() * 900000000 + 100000000);
+                    break;
+                case 'BR':
+                    number = '(+55) ' + Math.floor(Math.random() * 900 + 100) + ' ' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'ZA':
+                    number = '(+27) ' + Math.floor(Math.random() * 900 + 100) + ' ' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'ES':
+                    number = '(+34) ' + Math.floor(Math.random() * 900 + 100) + ' ' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'MX':
+                    number = '(+52) ' + Math.floor(Math.random() * 900 + 100) + ' ' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'IT':
+                    number = '(+39) ' + Math.floor(Math.random() * 900 + 100) + ' ' + Math.floor(Math.random() * 9000 + 1000);
+                    break;
+                case 'RU':
+                    number = '(+7) ' + Math.floor(Math.random() * 900000000 + 100000000);
+                    break;
+                default:
+                    number = 'Invalid country code';
+            }
+            phoneNumberElem.innerText = number;
+        }
+    </script>
+</body>
+</html>
